@@ -4,12 +4,6 @@ title: "Batch normalised LSTM for Tensorflow"
 date: 2016-07-07
 ---
 
-I was playing around, trying to implement the model in [Sutskever et al.](https://arxiv.org/abs/1409.3215) for translating natural language. Things looked good so I left the computer to do it's thing over the weekend. Unfortunately I came back to a boring plot as down the line, something went very wrong.
-
-![Model crash](/images/plot-crash.png){: .center-image }
-
-I tried adding a bunch of logging and reloading the model, but couldn't pinpoint why it crashed so badly. I suspect not using any kind of regularization might be part of it.
-
 Having had some success with batch normalization for a convolutional net I wondered how that'd go for a recurrent one and [this](https://arxiv.org/abs/1603.09025) paper by Cooijmans et al. got me really excited. I decided to try and reimplement the results from their paper on the sequential mnist task.
 
 ![Cooijmans results](/images/cooijmans-plot.png){: .center-image }
