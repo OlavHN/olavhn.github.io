@@ -4,7 +4,7 @@ title: "Image transformation networks with fancy loss functions"
 date: 2016-07-07
 ---
 
-<p><video src="/images/neuralstyle.mp4" class="center-image"  autoplay loop /></p>
+<p><video src="/images/neuralstyle.mp4" class="center-image" poster="/images/styleposter.jpg" autoplay loop /></p>
 
 Large convolutional nets for object classifications are pretty awesome at classifying objects. Since [Googles](https://research.googleblog.com/2015/06/inceptionism-going-deeper-into-neural.html) deep dream discovery they're awesome at other stuff as well. The input into a classification net is an image, and the output a classification, but in between there are layers transforming the image into a classification. What the deep dream project did was using those intermediate layers as target for the image, then tweaking the image in a way that enhances the features of a particular layer. Typically, layers close to the image will represent discovered shapes and textures, while layers closer to the classification will represent higher abstractions closer to the classes - like dogs and cars. Lots of fun can be had when selecting how these intermediate layers should be enhanced. [Here](https://github.com/google/deepdream/blob/master/dream.ipynb) are a couple of ways to use intermediate layers as targets, and lots more has enabled things like [Neural style](https://github.com/jcjohnson/neural-style), [Neural doodle](https://github.com/alexjc/neural-doodle).
 
