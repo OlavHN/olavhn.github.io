@@ -85,7 +85,7 @@ NUM_TARGETS = 19
 y = tf.placeholder([None, 1], tf.float32)
 
 def loss_fn(y, y_hat):
-    y = tf.tile(tf.reshape(price, [-1, 1]), [1, NUM_TARGETS])
+    y = tf.tile(tf.reshape(y, [-1, 1]), [1, NUM_TARGETS])
 
     quantiles = tf.reshape(tf.linspace(.05, .95, NUM_TARGETS), [1, -1])
     error = tf.losses.huber_loss(
@@ -116,12 +116,13 @@ The quantile embeddings are also generated with a technique I'm not familiar wit
 ## Code
 ```
 NUM_SAMPLES = 10
+EMBEDDING_SIZE = 64
 
 # At test time these variables can be overridden to get preferred quantiles
 tau = tf.placeholder_with_default([NUM_SAMPLES], [None])
 tau_sample = tf.random_uniform(tau, maxval=1.)
 
-def implicit_quantile(tau, n_embedding=NUM_ATOMS):
+def implicit_quantile(tau, n_embedding=EMBEDDING_SIZE):
     i = tf.expand_dims(tf.range(n_embedding, dtype=tf.float32), 0)
     tau = tf.expand_dims(tau, -1)
 
@@ -141,7 +142,7 @@ def loss_fn(tau, tau_sample, y, y_hat):
 
     y_hat = tf.layers.dense(y_hat, 1)
 
-    y = tf.tile(tf.reshape(price, [-1, 1, 1]), [1, tf.size(tau_sample), 1])
+    y = tf.tile(tf.reshape(y, [-1, 1, 1]), [1, tf.size(tau_sample), 1])
 
     quantiles = tf.expand_dims(tau_sample, 0)
 
